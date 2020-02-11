@@ -3,14 +3,15 @@ package guru.springframework.sfgpetclinic.services;
 import java.util.Set;
 
 public interface CommonService<T, ID> {
-   T  findById(ID id);
 
-   T save(T interfaceObject);
+	T findById(ID id);
 
-   Set<T> findAll();
+	T save(T interfaceObject);
 
-   void delete(T interfaceObject);
+	Set<T> findAll();
 
-   void deleteById(ID id);
+	void delete(T interfaceObject);
+
+	void deleteById(ID id);
 
 }

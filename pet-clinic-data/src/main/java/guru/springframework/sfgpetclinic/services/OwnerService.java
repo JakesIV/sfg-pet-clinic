@@ -4,5 +4,6 @@ import guru.springframework.sfgpetclinic.model.Owner;
 
 public interface OwnerService extends CommonService<Owner, Long> {
 
-    Owner findByLastName(String lastName);
+	Owner findByLastName(String lastName);
+
 }

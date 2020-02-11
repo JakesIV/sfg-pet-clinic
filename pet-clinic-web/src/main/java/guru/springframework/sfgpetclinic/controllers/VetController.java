@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class VetController {
 
-    private final VetService vetService;
+	private final VetService vetService;
 
-    public VetController(VetService vetService) {
-        this.vetService = vetService;
-    }
+	public VetController(VetService vetService) {
+		this.vetService = vetService;
+	}
 
-    @RequestMapping({"/vets","/vets/index","/vets/index.html"})
-    public String listVets(Model model)
-    {
-        model.addAttribute("vets",vetService.findAll() );
-        return "vets/index";
-    }
+	@RequestMapping({ "/vets", "/vets/index", "/vets/index.html" })
+	public String listVets(Model model) {
+		model.addAttribute("vets", vetService.findAll());
+		return "vets/index";
+	}
+
 }
