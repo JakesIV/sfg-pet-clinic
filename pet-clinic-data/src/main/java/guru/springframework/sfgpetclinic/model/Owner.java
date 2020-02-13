@@ -2,19 +2,20 @@ package guru.springframework.sfgpetclinic.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /*
 Implementation of Person
  */
 public class Owner extends Person {
 
-    private List<Pet> pets = new ArrayList<>();
+    private Set<Pet> pets;
 
-    public List<Pet> getPets() {
+    public Set<Pet> getPets() {
         return pets;
     }
 
-    public void setPets(List<Pet> pets) {
+    public void setPets(Set<Pet> pets) {
         this.pets = pets;
     }
 }
