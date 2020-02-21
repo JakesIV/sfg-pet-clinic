@@ -1,10 +1,7 @@
 package guru.springframework.sfgpetclinic.bootstrap;
 
 import guru.springframework.sfgpetclinic.model.*;
-import guru.springframework.sfgpetclinic.services.OwnerService;
-import guru.springframework.sfgpetclinic.services.PetTypeService;
-import guru.springframework.sfgpetclinic.services.SpecialtyService;
-import guru.springframework.sfgpetclinic.services.VetService;
+import guru.springframework.sfgpetclinic.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -13,19 +10,23 @@ import java.time.LocalDate;
 @Component
 public class DataLoader implements CommandLineRunner {
 
-	private OwnerService ownerService;
+	//we use the service interface so that we either inject JPA objects or MAP object depending on spring profile
+	private final OwnerService ownerService;
 
-	private VetService vetService;
+	private final VetService vetService;
 
-	private PetTypeService petTypeService;
+	private final PetTypeService petTypeService;
 
-	private SpecialtyService specialtyService;
+	private final SpecialtyService specialtyService;
 
-	public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService) {
+	private final VisitService visitService;
+
+	public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService, VisitService visitService) {
 		this.ownerService = ownerService;
 		this.vetService = vetService;
 		this.petTypeService = petTypeService;
 		this.specialtyService = specialtyService;
+		this.visitService = visitService;
 	}
 
 	@Override
@@ -51,6 +52,8 @@ public class DataLoader implements CommandLineRunner {
 		PetType bird = new PetType();
 		bird.setName("Bird");
 		PetType savedCatPetType = petTypeService.save(bird);
+		//
+		System.out.println("Loaded Pet Types......");
 		//
 		Owner owner1 = new Owner();
 		owner1.setFirstName("Jacques");
@@ -113,6 +116,9 @@ public class DataLoader implements CommandLineRunner {
 		visit.setDescription("Dentist");
 		visit.setPet(pet1);
 		visit.setDate(LocalDate.now());
+		visitService.save(visit);
+
+		System.out.println("Loaded Visits......");
 
 	}
 
