@@ -103,6 +103,17 @@ public class DataLoader implements CommandLineRunner {
 		vetService.save(vet2);
 		//
 		System.out.println("Loaded Vets......");
+
+		Visit visit = new Visit();
+		visit.setDescription("General checkup");
+		visit.setPet(pet1);
+		visit.setDate(LocalDate.now());
+
+		Visit visit2 = new Visit();
+		visit.setDescription("Dentist");
+		visit.setPet(pet1);
+		visit.setDate(LocalDate.now());
+
 	}
 
 }
