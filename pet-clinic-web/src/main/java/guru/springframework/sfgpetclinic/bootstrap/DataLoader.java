@@ -55,17 +55,15 @@ public class DataLoader implements CommandLineRunner {
 		//
 		System.out.println("Loaded Pet Types......");
 		//
-		Owner owner1 = new Owner();
-		owner1.setFirstName("Jacques");
-		owner1.setLastName("van der Merwe");
-		owner1.setAddress("2 Argent ave, Helderkruin");
-		owner1.setCity("Roodepoort");
-		owner1.setTelephoneNumber("011-111-2222");
-		//
-		Pet pet1 = new Pet();
-		pet1.setName("Zoey");
-		pet1.setPetType(savedDogPetType);
-		pet1.setBirthDate(LocalDate.now());
+		Owner owner1 = new Owner().builder()
+				.firstName("Jacques")
+				.lastName("van der Merwe")
+				.address("2 Argent ave, Helderkruin")
+				.city("Roodepoort")
+				.telephoneNumber("011-111-2222")
+				.build();
+		//This is using the builder pattern to create the pet object
+		Pet pet1 = new Pet().builder().name("Zoey").petType(savedDogPetType).birthDate(LocalDate.now()).owner(owner1).build();
 		pet1.setOwner(owner1);
 		owner1.getPets().add(pet1);
 		ownerService.save(owner1);
@@ -118,12 +116,14 @@ public class DataLoader implements CommandLineRunner {
 		visit.setDescription("General checkup");
 		visit.setPet(pet1);
 		visit.setDate(LocalDate.now());
+		visit.setVet(vet1);
 		visitService.save(visit);
 
 		Visit visit2 = new Visit();
 		visit.setDescription("Dentist");
 		visit.setPet(pet1);
 		visit.setDate(LocalDate.now());
+		visit.setVet(vet2);
 		visitService.save(visit);
 
 		System.out.println("Loaded Visits......");
