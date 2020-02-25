@@ -24,7 +24,7 @@ Implementation of Person
 public class Owner extends Person {
 
 	// We had to create this parameterised constructor for the builder pattern when
-	// extending classes else the builder patter not do find the inherited properties
+	// extending classes else the builder patter do not find the inherited properties
 	@Builder
 	public Owner(@NotEmpty String firstName, @NotEmpty String lastName, @NotEmpty String address, @NotEmpty String city,
 			@NotEmpty String telephoneNumber) {
