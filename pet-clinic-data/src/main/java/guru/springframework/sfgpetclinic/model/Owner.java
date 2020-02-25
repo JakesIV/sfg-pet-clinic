@@ -23,13 +23,15 @@ Implementation of Person
 @Table(name = "owners")
 public class Owner extends Person {
 
-    //We had to create this parameterised constructor for the builder pattern when extending classes else the builder patter not do find the inherited properties
-    @Builder
-    public Owner(@NotEmpty String firstName, @NotEmpty String lastName, @NotEmpty String address, @NotEmpty String city, @NotEmpty String telephoneNumber) {
-        super(firstName, lastName, address, city, telephoneNumber);
-    }
+	// We had to create this parameterised constructor for the builder pattern when
+	// extending classes else the builder patter not do find the inherited properties
+	@Builder
+	public Owner(@NotEmpty String firstName, @NotEmpty String lastName, @NotEmpty String address, @NotEmpty String city,
+			@NotEmpty String telephoneNumber) {
+		super(firstName, lastName, address, city, telephoneNumber);
+	}
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
-    private Set<Pet> pets = new HashSet<>();
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+	private Set<Pet> pets = new HashSet<>();
 
 }

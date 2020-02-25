@@ -14,37 +14,38 @@ import java.util.Set;
 @Profile("springdatajpa")
 class VisitJPAService implements VisitService {
 
-    public final VisitRepository visitRepository;
+	public final VisitRepository visitRepository;
 
-    public VisitJPAService(VisitRepository visitRepository) {
-        this.visitRepository = visitRepository;
-    }
+	public VisitJPAService(VisitRepository visitRepository) {
+		this.visitRepository = visitRepository;
+	}
 
-    @Override
-    public Visit findById(Long id) {
-        Optional<Visit> visit = visitRepository.findById(id);
-        return visit.orElse(null);
-    }
+	@Override
+	public Visit findById(Long id) {
+		Optional<Visit> visit = visitRepository.findById(id);
+		return visit.orElse(null);
+	}
 
-    @Override
-    public Visit save(Visit visit) {
-        return visitRepository.save(visit);
-    }
+	@Override
+	public Visit save(Visit visit) {
+		return visitRepository.save(visit);
+	}
 
-    @Override
-    public Set<Visit> findAll() {
-        Set<Visit> visits = new HashSet<>();
-        visitRepository.findAll().forEach(visits::add);
-        return visits;
-    }
+	@Override
+	public Set<Visit> findAll() {
+		Set<Visit> visits = new HashSet<>();
+		visitRepository.findAll().forEach(visits::add);
+		return visits;
+	}
 
-    @Override
-    public void delete(Visit visit) {
-        visitRepository.delete(visit);
-    }
+	@Override
+	public void delete(Visit visit) {
+		visitRepository.delete(visit);
+	}
 
-    @Override
-    public void deleteById(Long id) {
-        visitRepository.deleteById(id);
-    }
+	@Override
+	public void deleteById(Long id) {
+		visitRepository.deleteById(id);
+	}
+
 }

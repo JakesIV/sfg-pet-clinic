@@ -14,37 +14,38 @@ import java.util.Set;
 @Profile("springdatajpa")
 public class VetJPAService implements VetService {
 
-    public final VetRepository vetRepository;
+	public final VetRepository vetRepository;
 
-    public VetJPAService(VetRepository vetRepository) {
-        this.vetRepository = vetRepository;
-    }
+	public VetJPAService(VetRepository vetRepository) {
+		this.vetRepository = vetRepository;
+	}
 
-    @Override
-    public Vet findById(Long id) {
-        Optional<Vet> vet = vetRepository.findById(id);
-        return vet.orElse(null);
-    }
+	@Override
+	public Vet findById(Long id) {
+		Optional<Vet> vet = vetRepository.findById(id);
+		return vet.orElse(null);
+	}
 
-    @Override
-    public Vet save(Vet vet) {
-        return vetRepository.save(vet);
-    }
+	@Override
+	public Vet save(Vet vet) {
+		return vetRepository.save(vet);
+	}
 
-    @Override
-    public Set<Vet> findAll() {
-        Set<Vet> vets = new HashSet<>();
-        vetRepository.findAll().forEach(vets::add);
-        return vets;
-    }
+	@Override
+	public Set<Vet> findAll() {
+		Set<Vet> vets = new HashSet<>();
+		vetRepository.findAll().forEach(vets::add);
+		return vets;
+	}
 
-    @Override
-    public void delete(Vet vet) {
-        vetRepository.delete(vet);
-    }
+	@Override
+	public void delete(Vet vet) {
+		vetRepository.delete(vet);
+	}
 
-    @Override
-    public void deleteById(Long id) {
-        vetRepository.deleteById(id);
-    }
+	@Override
+	public void deleteById(Long id) {
+		vetRepository.deleteById(id);
+	}
+
 }

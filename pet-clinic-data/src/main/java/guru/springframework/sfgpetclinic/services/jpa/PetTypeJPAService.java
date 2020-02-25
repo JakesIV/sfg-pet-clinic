@@ -14,37 +14,38 @@ import java.util.Set;
 @Profile("springdatajpa")
 public class PetTypeJPAService implements PetTypeService {
 
-    private final PetTypeRepository petTypeRepository;
+	private final PetTypeRepository petTypeRepository;
 
-    public PetTypeJPAService(PetTypeRepository petTypeRepository) {
-        this.petTypeRepository = petTypeRepository;
-    }
+	public PetTypeJPAService(PetTypeRepository petTypeRepository) {
+		this.petTypeRepository = petTypeRepository;
+	}
 
-    @Override
-    public PetType findById(Long id) {
-        Optional<PetType> petType = petTypeRepository.findById(id);
-        return petType.orElse(null);
-    }
+	@Override
+	public PetType findById(Long id) {
+		Optional<PetType> petType = petTypeRepository.findById(id);
+		return petType.orElse(null);
+	}
 
-    @Override
-    public PetType save(PetType petType) {
-        return petTypeRepository.save(petType);
-    }
+	@Override
+	public PetType save(PetType petType) {
+		return petTypeRepository.save(petType);
+	}
 
-    @Override
-    public Set<PetType> findAll() {
-        Set<PetType> petTypes = new HashSet<>();
-        petTypeRepository.findAll().forEach(petTypes::add);
-        return petTypes;
-    }
+	@Override
+	public Set<PetType> findAll() {
+		Set<PetType> petTypes = new HashSet<>();
+		petTypeRepository.findAll().forEach(petTypes::add);
+		return petTypes;
+	}
 
-    @Override
-    public void delete(PetType petType) {
-        petTypeRepository.delete(petType);
-    }
+	@Override
+	public void delete(PetType petType) {
+		petTypeRepository.delete(petType);
+	}
 
-    @Override
-    public void deleteById(Long id) {
-        petTypeRepository.deleteById(id);
-    }
+	@Override
+	public void deleteById(Long id) {
+		petTypeRepository.deleteById(id);
+	}
+
 }

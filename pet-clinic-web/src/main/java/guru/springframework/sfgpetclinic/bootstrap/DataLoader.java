@@ -10,7 +10,8 @@ import java.time.LocalDate;
 @Component
 public class DataLoader implements CommandLineRunner {
 
-	//we use the service interface so that we either inject JPA objects or MAP object depending on spring profile
+	// we use the service interface so that we either inject JPA objects or MAP object
+	// depending on spring profile
 	private final OwnerService ownerService;
 
 	private final VetService vetService;
@@ -21,7 +22,8 @@ public class DataLoader implements CommandLineRunner {
 
 	private final VisitService visitService;
 
-	public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService, VisitService visitService) {
+	public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
+			SpecialtyService specialtyService, VisitService visitService) {
 		this.ownerService = ownerService;
 		this.vetService = vetService;
 		this.petTypeService = petTypeService;
@@ -34,8 +36,7 @@ public class DataLoader implements CommandLineRunner {
 
 		int count = petTypeService.findAll().size();
 
-		if (count == 0)
-		{
+		if (count == 0) {
 			loadData();
 		}
 	}
@@ -55,15 +56,11 @@ public class DataLoader implements CommandLineRunner {
 		//
 		System.out.println("Loaded Pet Types......");
 		//
-		Owner owner1 = new Owner().builder()
-				.firstName("Jacques")
-				.lastName("van der Merwe")
-				.address("2 Argent ave, Helderkruin")
-				.city("Roodepoort")
-				.telephoneNumber("011-111-2222")
+		Owner owner1 = new Owner().builder().firstName("Jacques").lastName("van der Merwe")
+				.address("2 Argent ave, Helderkruin").city("Roodepoort").telephoneNumber("011-111-2222").build();
+		// This is using the builder pattern to create the pet object
+		Pet pet1 = new Pet().builder().name("Zoey").petType(savedDogPetType).birthDate(LocalDate.now()).owner(owner1)
 				.build();
-		//This is using the builder pattern to create the pet object
-		Pet pet1 = new Pet().builder().name("Zoey").petType(savedDogPetType).birthDate(LocalDate.now()).owner(owner1).build();
 		pet1.setOwner(owner1);
 		owner1.getPets().add(pet1);
 		ownerService.save(owner1);
@@ -77,7 +74,7 @@ public class DataLoader implements CommandLineRunner {
 		ownerService.save(owner2);
 		//
 		System.out.println("Loaded Owners......");
-		//Add Specialties
+		// Add Specialties
 		Specialty radiology = new Specialty();
 		radiology.setDescription("Radiology");
 		Specialty radiologySpecialty = specialtyService.save(radiology);
