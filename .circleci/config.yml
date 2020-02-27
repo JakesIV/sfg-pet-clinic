@@ -4,7 +4,8 @@ orbs:
   maven: circleci/maven@0.0.12
 
 workflows:
+  version: 2
   maven_install:
     jobs:
-      - maven/install -DskipTests
+      - install -DskipTests
 
