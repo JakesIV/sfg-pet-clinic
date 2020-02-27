@@ -4,9 +4,7 @@ orbs:
   maven: circleci/maven@0.0.12
 
 workflows:
-  maven_package:
+  maven_install:
     jobs:
-      - maven/install
-  maven_test:
-    jobs:
-      - maven/test # checkout, build, test, and upload test results
+      - maven/install -DskipTests
+
